@@ -2,12 +2,19 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Login Example{% endblock %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css\login.css') }}" media="screen" title="no title" charset="utf-8">
 
 {% block page_content %}
     <h1>Login</h1>
     <div>
         <div>
-            {{ wtf.quick_form(form) }}
+        <!--  {{ wtf.quick_form(form) }}-->
+          <form method="post" action="/login" name="login">
+              {{ form.hidden_tag() }}
+              {{ form.username.label }} {{ form.username() }}
+              {{ form.password.label }} {{ form.password() }}
+              {{ form.submit() }}
+            </form>
         </div>
     </div>
 {% endblock %}
