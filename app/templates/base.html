@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"
 
 {% block title %}Login Example{% endblock %}
 
@@ -6,13 +6,13 @@
     <nav>
         <div>
             <a href="{{ url_for('main.index') }}">
-                Login Example
+                FlaskDomo Home
             </a>
-            <ul>
+            <ul id="menulist">
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 <li><a href="{{ url_for('main.protected') }}">Protected</a></li>
             </ul>
-            <ul>
+            <ul id="loginlist">
                 <li>
                     {% if current_user.is_authenticated %}
                         <a href="{{ url_for('main.logout') }}">Logout</a>
