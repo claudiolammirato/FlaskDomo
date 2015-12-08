@@ -3,6 +3,7 @@ from flask.ext.login import login_required, login_user, logout_user
 from ..models import User
 from . import main
 from .forms import LoginForm
+from ..python.importfile import importdatalog
 
 
 @main.route('/login', methods=['GET', 'POST'])
@@ -29,7 +30,26 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/protected')
+@main.route('/temperature')
 @login_required
-def protected():
-    return render_template('protected.html')
+def temperature():
+    importdatalog()
+    return render_template('temperature.html')
+
+
+@main.route('/lights')
+@login_required
+def lights():
+    return render_template('lights.html')
+
+
+@main.route('/garden')
+@login_required
+def garden():
+    return render_template('garden.html')
+
+
+@main.route('/alarm')
+@login_required
+def alarm():
+    return render_templatw('alarm.html')
