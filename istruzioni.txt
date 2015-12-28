@@ -1,0 +1,4 @@
+aggiungere a venv\scripts\activate.bat
+le seguenti righe
+set "TCL_LIBRARY=C:\Python27\tcl\tcl8.5"
+set "TK_LIBRARY=C:\Python27\tcl\tk8.5"

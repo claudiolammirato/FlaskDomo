@@ -1,9 +1,11 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, send_file
 from flask.ext.login import login_required, login_user, logout_user
 from ..models import User
 from . import main
 from .forms import LoginForm
 from ..python.importfile import importdatalog
+from ..python.graph import plot
+from cStringIO import StringIO
 
 
 @main.route('/login', methods=['GET', 'POST'])
@@ -29,11 +31,20 @@ def logout():
 def index():
     return render_template('index.html')
 
+@main.route('/image.png')
+def image_png():
+    image = StringIO()
+    plot(image)
+    image.seek(0)
+    return send_file(image,
+                     attachment_filename="image.png",
+                     as_attachment=True)
 
 @main.route('/temperature')
 @login_required
 def temperature():
-    importdatalog()
+    #importdatalog() levare # per importare da Arduino
+
     return render_template('temperature.html')
 
 
@@ -52,4 +63,4 @@ def garden():
 @main.route('/alarm')
 @login_required
 def alarm():
-    return render_templatw('alarm.html')
+    return render_template('alarm.html')
