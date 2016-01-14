@@ -1,5 +1,14 @@
-body{
-  background-color: yellow
+h1{
+  text-align: center;
+}
+
+
+#menulist {
+  width: 96%;
+  height: 20px;
+  border: 1px dotted navy;
+  margin-left: 0;
+  background-color: blue;
 }
 
 #menulist li{
@@ -7,10 +16,21 @@ body{
   display: inline;
   float: left;
   margin:0 10px 10px 0;
+  color: white;
 }
+
+#menulist a{
+  color: white;
+}
+
 
 #loginlist li{
   list-style-type: none;
   display: inline;
   float: right;
+
+}
+
+#loginlist a{
+  color: white;
 }

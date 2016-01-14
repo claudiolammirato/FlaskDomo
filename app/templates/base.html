@@ -1,35 +1,39 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"
+<!DOCKTYPE html>
+<html lang="eng">
 
-{% block title %}Login Example{% endblock %}
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
 
-{% block navbar %}
-    <nav>
-        <div>
-            <a href="{{ url_for('main.index') }}">
-                FlaskDomo Home
-            </a>
-            <ul id="menulist">
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                <li><a href="{{ url_for('main.temperature') }}">Temperature</a></li>
-                <li><a href="{{ url_for('main.lights') }}">Lights</a></li>
-                <li><a href="{{ url_for('main.garden') }}">Garden</a></li>
-                <li><a href="{{ url_for('main.alarm') }}">Alarm</a></li>
+<body>
+  <h1> FLASK DOMO </h1>
+  <nav>
+      <div>
+
+          <ul id="menulist">
+              <li><a href="{{ url_for('main.index') }}">Home</a></li>
+              <li><a href="{{ url_for('main.temperature') }}">Temperature</a></li>
+              <li><a href="{{ url_for('main.lights') }}">Lights</a></li>
+              <li><a href="{{ url_for('main.garden') }}">Garden</a></li>
+              <li><a href="{{ url_for('main.alarm') }}">Alarm</a></li>
+
+              <ul id="loginlist">
+                  <li>
+                          <a href="{{ url_for('main.settings') }}">Settings</a>
+                      {% if current_user.is_authenticated %}
+                          <a href="{{ url_for('main.logout') }}">Logout</a>
+                      {% else %}
+                          <a href="{{ url_for('main.login') }}">Login</a>
+                      {% endif %}
+                  </li>
+              </ul>
+
             </ul>
-            <ul id="loginlist">
-                <li>
-                    {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('main.logout') }}">Logout</a>
-                    {% else %}
-                        <a href="{{ url_for('main.login') }}">Login</a>
-                    {% endif %}
-                </li>
-            </ul>
-        </div>
-    </nav>
-{% endblock %}
 
-{% block content %}
-    <div>
-        {% block page_content %}{% endblock %}
-    </div>
-{% endblock %}
+      </div>
+  </nav>
+{% block content %}{% endblock %}
+</body>
+<footer> CL Copy </footer>
+</html>

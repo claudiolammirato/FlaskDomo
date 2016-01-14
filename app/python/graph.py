@@ -3,6 +3,6 @@ from matplotlib import pyplot
 
 def plot(image):
     x = numpy.linspace(0, 10)
-    y = numpy.sin(x)
+    y = numpy.cos(x)
     pyplot.plot(x, y)
-    pyplot.savefig(image, format='png')
+    pyplot.savefig(image, format='png', transparent=True)

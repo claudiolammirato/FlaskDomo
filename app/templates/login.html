@@ -1,9 +1,10 @@
 <!--{% import "bootstrap/wtf.html" as wtf %}-->
+{% extends "base.html" %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 
-{% extends "base.html" %}
+{% block title %}Login{% endblock %}
 
-{% block page_content %}
+{% block content %}
     <h1>Login to FlaskDomo</h1>
     <div>
         <div>

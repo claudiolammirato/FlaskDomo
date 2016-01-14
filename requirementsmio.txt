@@ -1,0 +1,8 @@
+flask
+
+numpy
+python-dateutil
+pytz
+pyparsing
+cycler
+matplotlib

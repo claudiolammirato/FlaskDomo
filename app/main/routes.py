@@ -2,9 +2,10 @@ from flask import render_template, redirect, url_for, request, send_file
 from flask.ext.login import login_required, login_user, logout_user
 from ..models import User
 from . import main
-from .forms import LoginForm
+from .forms import LoginForm, SettingsForm
 from ..python.importfile import importdatalog
 from ..python.graph import plot
+from ..python.serialports import serial_ports
 from cStringIO import StringIO
 
 
@@ -64,3 +65,12 @@ def garden():
 @login_required
 def alarm():
     return render_template('alarm.html')
+
+@main.route('/settings', methods=['GET', 'POST'])
+@login_required
+def settings():
+    form1 = SettingsForm()
+    portresults = serial_ports()
+    #print(portresults[0])
+    form1.serialport.choices=[('cpp', portresults[i]) for i in range(len(portresults))]
+    return render_template('settings.html', form=form1)

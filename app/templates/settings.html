@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/settings.css') }}">
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+    <h1>FlaskDomo Settings</h1>
+    <form method="post" action="/settings" name="settings">
+        {{ form.hidden_tag() }}
+        {{ form.serialport.label(id='usernamelabel') }} {{ form.serialport }}
+      </form>
+{% endblock %}
+
+<a href="{{ url_for('main.index') }}">back </a>

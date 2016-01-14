@@ -1,2 +1,5 @@
+{% extends "base.html" %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/garden.css') }}">
-garden
+{% block title %}garden{% endblock %}
+
+<a href="{{ url_for('main.index') }}">back </a>
