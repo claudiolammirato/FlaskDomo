@@ -5,9 +5,10 @@
 
 {% block content %}
     <h1>FlaskDomo Settings</h1>
-    <form method="post" action="/settings" name="settings">
+    <form method="post" action="/savesettings" name="settings">
         {{ form.hidden_tag() }}
         {{ form.serialport.label(id='usernamelabel') }} {{ form.serialport }}
+        {{ form.submit() }}
       </form>
 {% endblock %}
 

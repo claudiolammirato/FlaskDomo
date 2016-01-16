@@ -29,3 +29,24 @@ class User(UserMixin, db.Model):
 @lm.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+class Settings(db.Model):
+    __tablename__ = 'settings'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(16), index=True, unique=True)
+    serialport = db.Column(db.String(16))
+
+    def savedb(self, user, port):
+        user = Settings.query.filter_by(username=user).first()
+        if user is None:
+            serialport = Settings(username=user, serialport=port)
+            db.session.add(serialport)
+            db.session.commit()
+        user.serialport = port
+        db.session.commit()
+
+class Temperature(db.Model):
+    __tablename__ = 'tempdata'
+    id = db.Column(db.Integer, primary_key=True)
+    temperature = db.Column(db.Float(3))
+    date = db.Column(db.DateTime)

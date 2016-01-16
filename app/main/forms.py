@@ -11,3 +11,4 @@ class LoginForm(Form):
 
 class SettingsForm(Form):
     serialport = SelectField(u'Serial Port')
+    submit = SubmitField('Save')
