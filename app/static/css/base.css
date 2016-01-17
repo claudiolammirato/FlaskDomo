@@ -2,6 +2,13 @@ h1{
   text-align: center;
 }
 
+img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+}
+
 
 #menulist {
   width: 96%;
