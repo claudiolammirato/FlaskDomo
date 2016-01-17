@@ -4,6 +4,7 @@
 <script src="{{ url_for('static', filename='js/flot/jquery.js') }}"></script>
 <script src="{{ url_for('static', filename='js/flot/jquery.flot.js') }}"></script>
 <script src="{{ url_for('static', filename='js/flot/jquery.flot.tooltip.js') }}"></script>
+<script src="{{ url_for('static', filename='js/flot/jquery.flot.time.js') }}"></script>
 <script>
 
 <script
@@ -34,10 +35,12 @@
       d[i][0]=data[i].date*1000;
 
     }
-    var options = {
-    
 
-	};
+    var options = {
+      xaxis: { show: true, mode: "time",  timeformat: "%m/%d/%y%",   minTickSize: [1, "day"]},
+      grid: { hoverable: true },
+      tooltip: { show: true, content: "%s | date: %x; temp: %y" }
+	   };
      //alert(d);
     //var d2 = [[data[0].date, data[0].temperature], [data[1].date, data[1].temperature]];
     //chart.setData([{data: data.values}]);
