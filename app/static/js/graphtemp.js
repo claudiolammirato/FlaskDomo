@@ -18,12 +18,15 @@ function on_data(data) {
   for (i=0;i<Object.keys(data).length;i++) {
     d[i]=new Array();
     d[i][1]=data[i].temperature;
-    d[i][0]=data[i].date*1000;
+    d[i][0]=data[i].date*1000+3600000;
 
   }
 
   var options = {
-    xaxis: { show: true, mode: "time",  timeformat: "%m/%d/%y%",   minTickSize: [1, "day"]},
+
+    xaxis: {show: true, mode: "time", timeformat: "%I:%M %p", minTickSize: [1,"second"], twelveHourClock: true},
+    yaxis: {min:-30, max: 50,  tickSize: 5},
+    // DAYS xaxis: { show: true, mode: "time",  timeformat: "%m/%d/%y%",   minTickSize: [1, "day"]},
     grid: { hoverable: true },
     tooltip: { show: true, content: "%s | date: %x; temp: %y" }
    };

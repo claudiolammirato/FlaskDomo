@@ -16,6 +16,7 @@ def get_temp_json():
         timestamp = row[2]
         temp = row[1]
         return_array.append({'date': timestamp, 'temperature': temp})
+        return_array = return_array[-40:]
 
     #response = Response(json.dumps(return_array))
     return json.dumps(return_array)
