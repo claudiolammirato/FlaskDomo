@@ -5,6 +5,7 @@ from . import main
 from .forms import LoginForm, SettingsForm
 from ..python.serialports import serial_ports
 from ..python.gettemp import get_temp_json
+from ..python.command import sendcommand
 from cStringIO import StringIO
 
 
@@ -52,9 +53,17 @@ def gettempdata():
     return response
 
 
-@main.route('/lights')
+@main.route('/lights', methods=['GET', 'POST'])
 @login_required
 def lights():
+    if request.method == 'POST':
+        if request.form['submit'] == 'LUCE1':
+            print "LUCE1"
+            sendcommand()
+            pass # do something
+        elif request.form['submit'] == 'LUCE2':
+            print "LUCE2"
+            pass # do something else
     return render_template('lights.html')
 
 

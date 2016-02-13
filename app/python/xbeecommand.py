@@ -36,6 +36,23 @@ xbee = ZigBee(ser, callback=get_temperature)
 # Do other stuff in the main thread
 while True:
     try:
+        conn = sqlite3.connect('../../data-dev.sqlite3')
+        #time_range = int(time.time()) - (60*60*24.0) #grab the last 24 hours
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM command")
+
+        rows = cur.fetchall()
+        print rows[0][1]
+
+        if rows[0][1]=="none":
+            print "spento"
+        elif rows[0][1]=="open":
+            print "acceso"
+            cur.execute("UPDATE command SET command='none' WHERE Id=1")
+            conn.commit()
+
+
+
         time.sleep(.1)
     except KeyboardInterrupt:
         break
